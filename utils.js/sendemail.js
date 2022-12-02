@@ -57,7 +57,7 @@ const sendverifyemailprod = (user,url)=>{
         `,
         htmlContent: `
         <h1> Hello,${user.name},</h1>
-        <h2> Thanks for signup into our shop, confirm your account for buy joining the next link </h2>
+        <h2> Thanks for signup into our shop, confirm your account for buy and make reviews joining the next link </h2>
         <h3>Go into this link for confirm the email</h3>
         <a href="${url}">Visit</a>
                 `,

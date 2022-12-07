@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const VideoJuegoSchema = new mongoose.Schema({
     createdBy: {
-        type: ObjectId, // Object of user who post the game (should be an admin???)
+        type: mongoose.ObjectId, // Object of user who post the game (should be an admin???)
         required: true
     },
     name: {

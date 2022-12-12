@@ -10,5 +10,7 @@ const actionsRouter = express.Router();
 //upload image
 actionsRouter.post('/updateprofilepic',authController.isLogin,authController.imageUploader.single('photo'),authController.updateprofilepic);
 //upload videojuego
-actionsRouter.post('/postgame',gamesController.createGame);//falta poner restictTo admin
+actionsRouter.post('/postgame',gamesController.createGame);//falta poner restictTo admin maybe
+//get a videojuego
+actionsRouter.get("/game/:gameId",gamesController.getagame)
 module.exports = actionsRouter;

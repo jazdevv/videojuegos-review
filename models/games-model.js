@@ -36,6 +36,14 @@ const VideoJuegoSchema = new mongoose.Schema({
     slug:{
         type: String, 
         default: this.name 
+    },
+    avgStars:{
+        type: Number,
+        default: 0
+    },
+    numReviews:{
+        type: Number,
+        default: 0
     }
 });
 

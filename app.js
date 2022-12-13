@@ -26,9 +26,11 @@ console.log(path.join(__dirname, 'public'))
 app.use(express.json());
 
 //user
+
 app.use("/",viewsRouter);
 app.use("/api",UserRouter);
 app.use("/useractions",ActionsRouter);
+
 
 //set static files that are rendered after
 // app.use(express.static(path.join(__dirname,'public')));

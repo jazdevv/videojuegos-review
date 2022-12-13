@@ -1,6 +1,7 @@
 
 
 const mongoose = require("mongoose");
+const express = require('express');
 const app = require("./app")
 // Import builtin NodeJS modules to instantiate the service
 const http = require("http");
@@ -12,6 +13,8 @@ if(process.env.NODE_ENV == "production"){
 } else if (process.env.NODE_ENV === "development"){
     db = process.env.DATABASE_DEV.replace("<password>",process.env.DATABASE_ATLAS_PASSWORD);
 }
+
+//form data a req.body
 
 
 //console.log(db)

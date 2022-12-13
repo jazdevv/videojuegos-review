@@ -15,5 +15,9 @@ viewsRouter.get('/login',(req,res)=>{
     res.render('login.ejs')
 });
 //mainpage 
-viewsRouter.get('/',(req,res)=>{});
+viewsRouter.get('/',(req,res)=>{
+    res.status(200).json({
+        status: "succes"
+    })
+});
 module.exports = viewsRouter;

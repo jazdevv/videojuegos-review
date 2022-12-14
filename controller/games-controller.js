@@ -34,16 +34,32 @@ exports.multerPost =  multer({
 });
 
 exports.createGame = async (req,res) => {
+    //we cannot acces post._id before create it, so we have to put a different and unique name to the post image, is that that we py the Dte.now(), unique date
+    let path = `./uploads/portadapic/defaults.jpeg`
+    
 
-    console.log("create game")
-    console.log(req.body)
-    console.log("yo")
+    // toFile() method stores the image on disk
+    //req.files is an object with the fields name as key, here the field name of the post form-data is image, so we select that object
+    //inside the object there is an array with images, in this case we set the maxImages to1 before in multer options.
+    //if the image form-data field its not an image, and its for exemple a text, it will return an error wich will be catched and return error response
+    //so no post will be created
+    
+    if(req.files.image){
+        path = `./uploads/portadapic/${req.user._id}+${Date.now()}.jpeg`
+        try{
+            await sharp(req.files.image[0].buffer).jpeg({ mozjpeg: true }).jpeg({quality: 50}).toFormat('jpeg').toFile(`${path}`);
+        }catch(err){
+            return res.status(400).json({status:"fail",message:"probably sending a bad photo format"});
+        }  
+    }
+    
     const game = await Games.create({
         createdBy: req.user._id,
         name: req.body.name,
         description: req.body.description,
         linkoficialpage: req.body.linkoficialpage,
         canyoubuyit: req.body.canyoubuyit,
+        portadapic:path
     })
 
     res.status(200).json({

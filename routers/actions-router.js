@@ -10,7 +10,13 @@ const actionsRouter = express.Router();
 //upload image
 actionsRouter.post('/updateprofilepic',authController.isLogin,authController.imageUploader.single('photo'),authController.updateprofilepic);
 //upload videojuego multer.none se encarga de pasar la form data a req.body para usarla pero solo text fields
-actionsRouter.post('/postgame',multer().none(),authController.isLogin,gamesController.createGame);//falta poner restictTo admin maybe
+actionsRouter.post('/postgame',gamesController.multerPost.fields([
+    {name:"createdBy",maxCount:1},
+    {name:"name",maxCount:1},
+    {name:"description",maxCount:1},
+    {name:"linkoficialpage",maxCount:1},
+    {name:"canyoubuyit",maxCount:1},
+    {name:"image",maxCount:1}]),authController.isLogin,gamesController.createGame);//falta poner restictTo admin maybe
 //get a videojuego
 actionsRouter.get("/game/:gameId",gamesController.getagame)
 //delete a videojuego

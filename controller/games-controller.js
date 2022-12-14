@@ -1,5 +1,38 @@
 const Games = require('../models/games-model');
 
+//image handling
+const multer  = require('multer');
+const sharp = require('sharp');
+fs = require('fs');
+const path = require('path');
+
+//-------------------------------POSTS MULTER FORM-DATA PARSER-------------------------------
+//we dont use diskstorage, because we dont wanna automatically save the image, we want to use memorystorage because after we wanna use sharp
+//for modyify the image and save the image from sharp
+
+
+exports.multerPost =  multer({
+    storage: multer.memoryStorage(),
+    fileFilter: function(req, file, cb) {
+        //esto solo se ejecuta con los files, si hay un text en el field no se ejecutara pero seguira
+        // console.log("hey")
+        // console.log(file)
+        if (file.fieldname ==="image"){
+            console.log("image")
+    
+            if (file.mimetype.split("/")[0] === 'image') {
+    
+                cb(null, true);
+    
+            } else {
+    
+                cb(new Error("Only images are allowed!"));
+                
+            }
+        }
+    }
+});
+
 exports.createGame = async (req,res) => {
 
     console.log("create game")

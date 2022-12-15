@@ -5,16 +5,17 @@ const reviewsSchema = new mongoose.Schema({
         type: mongoose.ObjectId, // Object of user who post the review
         required: true
     },
-    commentedPostId: {
+    commentedGameId: {
         type: mongoose.ObjectId, // Object of user who post the review
         required: true
     },
     text: {
+    type: String,
        required: true,
-       type: String,
        minlenght: 1
     },
     stars:{
+        type: Number,
         required: true,
         min: 1,
         max: 5
@@ -24,3 +25,5 @@ const reviewsSchema = new mongoose.Schema({
 reviewsSchema.index({createdBy:-1,commentedPostId:-1},{unique: true});
 
 const Reviews = mongoose.model("reviews",reviewsSchema);
+
+module.exports = Reviews;

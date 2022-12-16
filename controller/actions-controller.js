@@ -40,7 +40,7 @@ exports.deleteReview = async(req,res)=> {
     if(value===false){
         return res.status(400).json({
             status: "fail",
-            message: "You cant delete a retweet that dont exists"
+            message: "You cant delete a review that dont exists"
         })
     };
 
@@ -76,12 +76,12 @@ exports.getGameReviews = async(req,res)=> {
 };
 
 exports.updateReview = async (req,res)=> {
-    //check if game exists
-    const Game = await Games.findById(req.body.gameId)
-    if(!Game){
+    //check if review exists
+    const userReview = await Reviews.findById(req.body.reviewId)
+    if(!userReview){
         return res.status(200).json({
             status: "fail",
-            message: "Game not found"
+            message: "Review not found"
         })
     };
 

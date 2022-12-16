@@ -75,11 +75,22 @@ exports.getGameReviews = async(req,res)=> {
     });
 };
 
-exports.updateReview = (req,res)=> {
-    console.log("update route working");
+exports.updateReview = async (req,res)=> {
+    //check if game exists
+    const Game = await Games.findById(req.body.gameId)
+    if(!Game){
+        return res.status(200).json({
+            status: "fail",
+            message: "Game not found"
+        })
+    };
+
+    //get the reviews for update
+    const Review = await Reviews.findByIdAndUpdate(req.body.reviewId,{text:req.body.text,stars:req.body.stars});
 
     res.status(200).json({
-        status: "succes"
+        status: "succes",
+        Review
     });
 };
 

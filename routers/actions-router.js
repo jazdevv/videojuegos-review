@@ -39,6 +39,8 @@ actionsRouter.post("/deletereview",authController.isLogin,actionsController.dele
 //update comment
 actionsRouter.post("/updatereview",authController.isLogin,actionsController.updateReview)
 
-
+//----------LIKE A REVIEW----------
+//like the review
+actionsRouter.post("/like",authController.isLogin,actionsController.LikeunLikehandler)
 
 module.exports = actionsRouter;

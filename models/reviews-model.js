@@ -20,6 +20,8 @@ const reviewsSchema = new mongoose.Schema({
         min: 1,
         max: 5
     }
+},{
+    timestamps: true
 });
 
 reviewsSchema.index({createdBy:-1,commentedPostId:-1},{unique: true});

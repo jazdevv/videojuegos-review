@@ -1,6 +1,7 @@
 const User = require('./../models/user-model');
 const Reviews = require('./../models/reviews-model');
 const Games = require('../models/games-model');
+const Like = require('../models/likes-model');
 
 const DoUserReviewedthegame = async (userId, gameId) => {
 
@@ -94,3 +95,6 @@ exports.updateReview = async (req,res)=> {
     });
 };
 
+exports.LikeunLikehandler = async (req,res)=> {
+    
+};

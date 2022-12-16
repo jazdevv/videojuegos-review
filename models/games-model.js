@@ -45,6 +45,8 @@ const VideoJuegoSchema = new mongoose.Schema({
         type: Number,
         default: 0
     }
+},{
+    timestamps: true
 });
 
 const VideoJuego = mongoose.model("videojuegos",VideoJuegoSchema);

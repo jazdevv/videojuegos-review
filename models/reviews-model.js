@@ -10,7 +10,7 @@ const reviewsSchema = new mongoose.Schema({
         required: true
     },
     text: {
-    type: String,
+        type: String,
        required: true,
        minlenght: 1
     },
@@ -19,6 +19,10 @@ const reviewsSchema = new mongoose.Schema({
         required: true,
         min: 1,
         max: 5
+    },
+    numLikes: {
+        type: Number,
+        default: 0
     }
 },{
     timestamps: true

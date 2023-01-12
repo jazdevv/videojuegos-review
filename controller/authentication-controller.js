@@ -61,8 +61,7 @@ exports.signup = async (req,res)=>{
             name:req.body.name, 
             password:req.body.password, 
             email:req.body.email, 
-            passwordconfirm:req.body.passwordconfirm,
-            usernametag:req.body.usernametag
+            passwordconfirm:req.body.passwordconfirm
         });
         //create url for confirm email
         const url = `${req.protocol}://${req.get('host')}/verifyemail/${user._id}`

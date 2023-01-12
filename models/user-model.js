@@ -9,13 +9,6 @@ const userschema = new mongoose.Schema({
         trim: true,
         minlenght: 3
     },
-    usernametag: {
-        unique: true,
-        type: String,
-        required: true,
-        trim: true,
-        minlenght: 3,
-    },
     profileImage: {
         type: String,
         default: './uploads/profilepic/default.jpeg',

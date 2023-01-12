@@ -2,6 +2,7 @@ const express = require('express');
 const user = require("./../controller/user-controller");
 const authController = require('../controller/authentication-controller');
 const { model } = require('mongoose');
+const views = require("./../controller/views-controller");
 
 const viewsRouter = express.Router();
 
@@ -14,6 +15,9 @@ viewsRouter.get('/user/:userid',authController.isLogin,user.userprofile);
 viewsRouter.get('/login',(req,res)=>{
     res.render('login.ejs')
 });
+//user profile
+viewsRouter.get('/',authController.isLogin,views.mainpage);
+
 //mainpage 
 viewsRouter.get('/',(req,res)=>{
     res.status(200).json({

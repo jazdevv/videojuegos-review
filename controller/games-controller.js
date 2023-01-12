@@ -1,5 +1,5 @@
 const Games = require('../models/games-model');
-
+const Utils = require('./../utils.js/utils')
 //image handling
 const multer  = require('multer');
 const sharp = require('sharp');
@@ -71,8 +71,9 @@ exports.createGame = async (req,res) => {
 exports.getagame = async (req,res)=>{
     const game = await Games.findOne({_id:req.params.gameId});
     if(game){
+        const {logguser} = await Utils.defaultpageThings(req.user._id);
       //render frontend with this response , ejs
-    res.render("game.ejs",{game:game});  
+    res.render("game.ejs",{game:game,logguser});  
     }else{
         res.status(200).json({
             message:"game not found withthat id"
